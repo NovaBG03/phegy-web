@@ -1,0 +1,48 @@
+<div class="card">
+  <div class="card-header">
+    <img class="user-image no-select"
+         [src]="userService.getProfilePicUrl(image.publisherUsername)"
+         [alt]="image.publisherUsername + '-picture'"
+         [routerLink]="'/profile/' + image.publisherUsername">
+    <div class="header-content">
+      <div class="name" [routerLink]="'/profile/' + image.publisherUsername">{{ image.publisherUsername }}</div>
+      <div class="description">Заглавие: <span class="name">{{ image.title }}</span></div>
+      <div class="description" *ngIf="image.description">Описание: <span class="name">{{ image.description }}</span></div>
+      <div *ngIf="!isModeratorMode" class="description">Точки: <span class="name">{{ image.points }}</span></div>
+      <div class="description">{{ image.publishedOn + 'Z' | date:'short' }}</div>
+    </div>
+    <app-image-drop-down *ngIf="authService.user | async"
+                        class="image-drop-down"
+                        [authUser]="authService.user | async"
+                        [image]="image"
+                        (deleteOption)="delete()"></app-image-drop-down>
+  </div>
+  <img [src]="image.imageUrl" [alt]="image.title" [title]="image.title" class="image no-select">
+  <div class="image-navigation">
+    <ng-template [ngIf]="image.isApproved == undefined || image.isApproved" [ngIfElse]="notApprovedNavigation">
+      <ng-container *ngIf="authService.user | async as user">
+        <button *ngIf="user.username === image.publisherUsername; else voteBtn"
+                class="btn-outline"
+                [routerLink]="'/profile/' + image.publisherUsername">
+          Моят профил
+        </button>
+        <ng-template #voteBtn>
+          <button class="btn-outline" (click)="startVoting()">Оцени</button>
+        </ng-template>
+      </ng-container>
+    </ng-template>
+    <ng-template #notApprovedNavigation>
+      <ng-template [ngIf]="isModeratorMode" [ngIfElse]="pendingNavigation">
+        <button class="btn-outline btn-success" (click)="approve()">Одобри</button>
+        <button class="btn-outline btn-danger" (click)="reject()">Отхвърли</button>
+      </ng-template>
+      <ng-template #pendingNavigation>
+        <button class="btn-outline btn-grey" disabled>Изчаква се одобрение</button>
+      </ng-template>
+    </ng-template>
+  </div>
+</div>
+
+<app-vote *ngIf="isVoteOpen"
+              [image]="image"
+              (close)="finishVoting()"></app-vote>

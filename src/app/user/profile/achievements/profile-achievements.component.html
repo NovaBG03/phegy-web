@@ -1,0 +1,12 @@
+<ng-container *ngIf="userAchievements">
+  <div class="small-label">
+    {{ (authService.user | async)?.username == selectedUsername ? 'Моите постижения' : 'Постижения' }}
+  </div>
+  <div class="achievement-card" *ngFor="let achievement of userAchievements.achievements">
+    <img src="../../../../assets/images/like.png" alt="statistic-image">
+    <div class="card-content">
+      <div class="value">{{ achievement.value }}</div>
+      <div class="description">{{ achievement.name }}</div>
+    </div>
+  </div>
+</ng-container>

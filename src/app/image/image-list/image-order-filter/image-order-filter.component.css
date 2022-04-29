@@ -1,0 +1,24 @@
+.drop-down {
+  position: absolute;
+  z-index: 3;
+}
+
+.drop-down li {
+  padding-right: 1.25em;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.25em;
+}
+
+.filter-btn-icon {
+  width: 1.5em;
+  height: 1.5em;
+  fill: var(--color-text);
+}
+
+.filter-btn.active .filter-btn-icon {
+  fill: var(--color-white);
+}

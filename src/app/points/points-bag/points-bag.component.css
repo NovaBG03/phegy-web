@@ -1,0 +1,19 @@
+.points-bag {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  min-width: 6.75rem;
+  height: 2.5rem;
+  background-color: var(--color-info);
+  border-radius: 0.5rem;
+  padding: 0 1em;
+}
+
+.points {
+  display: inline;
+}
+
+.points-value {
+  font-weight: var(--weight-medium);
+}

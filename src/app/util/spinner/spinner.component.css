@@ -1,0 +1,34 @@
+.spinner-box {
+  --color-spinner: var(--color-secondary);
+  display: inline-block;
+  background-color: transparent;
+}
+
+.circle-border {
+  width: 9.375rem;
+  height: 9.375rem;
+  padding: 0.1875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: var(--color-spinner);
+  background: linear-gradient(0deg, rgba(128, 128, 128, 0.1) 33%, var(--color-secondary) 100%);
+  animation: spin .8s linear 0s infinite;
+}
+
+.circle-core {
+  width: 100%;
+  height: 100%;
+  background-color: var(--color-main);
+  border-radius: 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}

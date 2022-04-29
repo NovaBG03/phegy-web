@@ -1,0 +1,9 @@
+<div class="notification" [ngClass]="notification.category">
+  <div class="title">
+    <span>{{ notificationService.getCategoryIcon(notification.category) }}</span>
+    {{ notification.title }}</div>
+  <div class="message">{{ notification.message }}</div>
+  <div class="options">
+    <button class="option" (click)="close()">Затвори</button>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+.drop-down {
+  position: absolute;
+  top: calc(100% + 0.625rem);
+  right: 0;
+  width: 120%;
+}
+
+.toggle-box {
+  position: relative;
+  width: 2.75rem;
+  height: 1.5rem;
+  background: var(--color-background);
+  border-radius: 0.5rem;
+  margin-left: auto;
+}
+
+.toggle-box.active {
+  background: var(--color-text-unselected);
+}
+
+.toggle-box:after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: 0.5rem;
+  background: var(--color-text);
+  transform: translate(-100%, -50%);
+  transition: var(--transition);
+}
+
+.toggle-box.active:after {
+  transform: translate(5%, -50%);
+  background: var(--color-secondary);
+}
+
+/* Responsive */
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .drop-down {
+    position: fixed;
+    inset: 4.5rem 0 3.4375rem 0;
+    width: auto;
+    box-shadow: none;
+    border-radius: 0;
+    border: none;
+    background: var(--color-background);
+  }
+
+  .toggle-box {
+    background: var(--color-main);
+  }
+}

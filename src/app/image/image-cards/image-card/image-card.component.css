@@ -1,0 +1,88 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  border-radius: 0.5rem;
+  padding: 1.25rem;
+  background-color: var(--color-main);
+  box-shadow: var(--box-shadow-card);
+  width: 24em;
+  margin-bottom: 0.75rem;
+}
+
+.card-header {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.user-image {
+  object-fit: cover;
+  height: 3.125rem;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.header-content {
+  cursor: pointer;
+  margin-left: 0.625rem;
+}
+
+.header-content .name {
+  font-size: 1rem;
+  font-weight: var(--weight-medium);
+}
+
+.header-content .description {
+  font-size: 0.875rem;
+  color: var(--color-text-unselected);
+  font-weight: bold;
+  cursor: default;
+}
+
+.image-drop-down {
+  margin: 0 0 auto auto;
+}
+
+.image {
+  object-fit: cover;
+  margin: 1.25rem 0;
+  border-radius: 0.5rem;
+  outline: 0.125rem solid var(--color-text-unselected);
+  cursor: pointer;
+}
+
+.image-navigation {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+/* Responsive */
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 48.0625rem) and (max-width: 61.1875rem) {
+  .card {
+    width: 18.125em;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .card {
+    width: 85vw;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 30rem) {
+  .card {
+    width: 95vw;
+  }
+}
+

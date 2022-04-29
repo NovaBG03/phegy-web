@@ -1,0 +1,27 @@
+<div class="profile-image-card">
+  <img [src]="profileImage"
+       [alt]="username + ' profile image'">
+  <ng-container *ngIf="isEditable">
+    <div class="file-upload" *ngIf="!resizedImageUrl">
+      <label class="btn-outline btn-upload" for="profile-img" (click)="imageFileInput.value = ''">
+        + Качи нова снимка
+        <input class="visually-hidden"
+               id="profile-img"
+               type="file"
+               [accept]="acceptedImageTypesString"
+               (change)="onSelect(asInputElement($event.target).files)"
+               #imageFileInput>
+      </label>
+    </div>
+    <ng-template [ngIf]="resizedImageUrl">
+      <button class="btn-outline btn-success" (click)="saveImage()">Запиши</button>
+      <button class="btn-solid btn-danger" (click)="setResizedImage(null)">Отказ</button>
+    </ng-template>
+  </ng-container>
+</div>
+
+<app-image-resizer *ngIf="isResizing && image"
+                   [aspectRatio]="1"
+                   [image]="image"
+                   (imageResized)="setResizedImage($event)">
+</app-image-resizer>

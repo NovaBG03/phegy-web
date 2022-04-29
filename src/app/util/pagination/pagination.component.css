@@ -1,0 +1,76 @@
+.page-navigation-block {
+  display: block;
+  margin-top: 1.25rem;
+}
+
+.page-selector {
+  --selector-size: 2.5rem;
+  --selector-ratio: 0.1;
+  display: flex;
+  gap: calc(var(--selector-size) / 4);
+  justify-content: center;
+  flex-wrap: nowrap;
+  flex-direction: row;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-selector .btn-page {
+  --selector-border-size: calc(var(--selector-size) * var(--selector-ratio));
+  display: inline-block;
+  width: var(--selector-size);
+  height: var(--selector-size);
+  font-size: calc(var(--selector-size) / 2);
+  line-height: calc(var(--selector-size) - (var(--selector-border-size) * 2));
+  text-align: center;
+  border-radius: 0.5rem;
+  background: var(--color-info);
+  cursor: pointer;
+  border: var(--selector-border-size) solid var(--color-info);
+  color: var(--color-text);
+}
+
+.page-selector .btn-page:hover {
+  opacity: 0.9;
+  border: var(--selector-border-size) solid var(--color-text-unselected);
+}
+
+.page-selector .btn-page:active {
+  opacity: 1;
+  background: var(--color-text-unselected);
+  color: var(--color-white);
+}
+
+.page-selector .btn-page.active {
+  background: var(--color-secondary);
+  color: var(--color-white);
+  border: var(--selector-border-size) solid var(--color-info);
+}
+
+.page-selector .btn-page.inactive {
+  opacity: 1;
+  background: var(--color-info);
+  color: var(--color-text);
+  border: var(--selector-border-size) solid var(--color-info);
+  cursor: default;
+}
+
+.page-selector .btn-page a {
+  color: inherit;
+}
+
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .page-selector {
+    --selector-size: 2.375rem;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 30rem) {
+  .page-selector {
+    --selector-size: 2.25rem;
+  }
+}

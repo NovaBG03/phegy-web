@@ -1,0 +1,9 @@
+<div class="dark-bg"></div>
+<div class="phegy-card fixed" *ngIf="model">
+  <img class="banner" [src]="model.bannerPath" alt="alert image">
+  <div class="message" [innerHTML]="model.message"></div>
+  <div class="description">{{ model.description }}</div>
+  <button class="btn-solid"
+          [ngClass]="getButtonStyleClass"
+          (click)="onButtonPressed()">{{ model.buttonText }}</button>
+</div>

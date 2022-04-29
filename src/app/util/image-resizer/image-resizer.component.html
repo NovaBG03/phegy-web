@@ -1,0 +1,27 @@
+<div class="dark-bg"></div>
+<div class="phegy-card fixed" [ngClass]="{'hidden-cropper': isLoading}">
+  <div class="close-icon" (click)="cancelUpload()">x</div>
+  <div class="message">Преоразмерете изображението</div>
+  <image-cropper id="image-cropper"
+                 [imageFile]="image"
+                 [aspectRatio]="aspectRatio"
+                 [maintainAspectRatio]="!!aspectRatio"
+                 [containWithinAspectRatio]="!!aspectRatio"
+                 [resizeToWidth]="960"
+                 [cropperMinWidth]="360"
+                 [onlyScaleDown]="true"
+                 [roundCropper]="false"
+                 format="png"
+                 (imageLoaded)="imageLoaded()"
+                 (imageCropped)="imageCropped($event)"
+  ></image-cropper>
+
+  <div class="spinner-center" *ngIf="isLoading">
+    <app-spinner></app-spinner>
+  </div>
+
+  <div class="button-group">
+    <button class="btn-solid btn-danger" (click)="cancelUpload()">Отказ</button>
+    <button class="btn-solid" (click)="saveChanges()">Запази</button>
+  </div>
+</div>

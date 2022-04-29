@@ -1,0 +1,32 @@
+<div class="notification-panel" *ngIf="notifications && notifications.length">
+  <div class="options no-select">
+    <ng-container *ngIf="showClean">
+      <button class="notification-icon"
+              title="Clear notifications"
+              (click)="notificationService.closeAllNotifications()">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path
+            d="M10 2 9 3H5c-.6 0-1 .4-1 1s.4 1 1 1h14c.6 0 1-.4 1-1s-.4-1-1-1h-4l-1-1h-4zM5 7v13c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V7H5zm4 2c.6 0 1 .4 1 1v9c0 .6-.4 1-1 1s-1-.4-1-1v-9c0-.6.4-1 1-1zm6 0c.6 0 1 .4 1 1v9c0 .6-.4 1-1 1s-1-.4-1-1v-9c0-.6.4-1 1-1z"/>
+        </svg>
+      </button>
+    </ng-container>
+
+    <button class="notification-icon"
+            [title]="(showNotifications ? 'Hide' : 'Show') + ' notification-components'"
+            [ngClass]="dominatingCategory"
+            (click)="toggleShowNotifications()">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+        <path
+          d="M18 15.984 20.016 18v.984H3.985V18l2.016-2.016v-4.969c0-3.094 1.641-5.625 4.5-6.328v-.703c0-.844.656-1.5 1.5-1.5s1.5.656 1.5 1.5v.703c2.859.703 4.5 3.281 4.5 6.328v4.969zm-6 6c-1.125 0-2.016-.891-2.016-1.969h4.031c0 1.078-.938 1.969-2.016 1.969z"/>
+      </svg>
+      <span class="count">{{ notificationsCount }}</span>
+    </button>
+  </div>
+
+  <div class="notifications" *ngIf="showNotifications">
+    <ng-container *ngFor="let notification of notifications">
+      <ng-template appNotificationPlaceholder
+                   [notification]="notification"></ng-template>
+    </ng-container>
+  </div>
+</div>

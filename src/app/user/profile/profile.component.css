@@ -1,0 +1,24 @@
+.heading {
+  justify-content: center;
+}
+
+.profile {
+  display: flex;
+  gap: 2em;
+  margin-bottom: 2rem;
+  justify-content: center;
+  align-items: center;
+}
+
+@media (max-width: 48rem) {
+  .profile {
+    flex-direction: column;
+  }
+
+  .achievements {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}

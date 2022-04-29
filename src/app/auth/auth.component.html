@@ -1,0 +1,86 @@
+<div class="auth-container">
+  <div class="illustration-panel">
+    <img class="illustration no-select" [src]="imageSrc" alt="login image"/>
+  </div>
+  <div class="login-panel">
+    <p class="tip">{{ isRegister ? 'Вече имате профил?' : 'Нов тук?' }}
+      <a class="tip-link"
+         [routerLink]="isRegister ? '/login' : '/register'">{{ isRegister ? 'Влез' : 'Регистрирай се'}}</a>
+    </p>
+    <h2 class="headline">{{ isRegister ? 'Добре дошли във Феги!' : 'Здравей отново!'}}</h2>
+    <h3 class="subtitle">{{ isRegister ? 'Създай своя профил' : 'Влез в профила си'}}</h3>
+    <form class="auth-form"
+          [ngStyle]="{'visibility': isLoading ? 'hidden' : 'visible'}"
+          [formGroup]="authForm"
+          (ngSubmit)="onAuthenticate()">
+      <div class="error-message" *ngIf="errorMessage">*{{ errorMessage }}</div>
+      <div class="form-control">
+        <label for="username">Потребителско име</label>
+        <input id="username"
+               type="text"
+               placeholder="Потребителско име"
+               formControlName="username">
+        <ng-template [ngIf]="username.touched && username.invalid && username.errors">
+          <span class="hint"
+                *ngIf="username.errors.notOnlyWhitespace">* Потребителското име не трябва да е празно.</span>
+          <span class="hint" *ngIf="username.errors.required">* Потребителското име е задължително.</span>
+          <span class="hint"
+                *ngIf="username.errors.minlength">* Потребителското име трябва да бъде поне {{ username.errors?.minlength?.requiredLength }}
+            символа.</span>
+          <span class="hint"
+                *ngIf="username.errors.maxlength">* Потребителското име не трябва да бъде повече от {{ username.errors?.maxlength?.requiredLength }}
+            символа.</span>
+        </ng-template>
+      </div>
+      <div class="form-control" *ngIf="isRegister">
+        <label for="email">Е-поща</label>
+        <input id="email"
+               type="email"
+               placeholder="Електронна поща"
+               formControlName="email">
+        <ng-template [ngIf]="email.touched && email.invalid && email.errors">
+          <span class="hint" *ngIf="email.errors.email">* Трябва да бъде валидна електронна поща.</span>
+          <span class="hint" *ngIf="email.errors.required">* Електронната поща е задължителна.</span>
+          <span class="hint"
+                *ngIf="email.errors.minlength">* Електронната поща трябва да бъде поне {{ email.errors?.minlength?.requiredLength }}
+            символа.</span>
+          <span class="hint"
+                *ngIf="email.errors.maxlength">* Електронната поща не трябва да бъде повече от {{ email.errors?.maxlength?.requiredLength }}
+            символа.</span>
+        </ng-template>
+      </div>
+      <div id="passwords" formGroupName="passwords">
+        <div class="form-control">
+          <label for="password">Парола</label>
+          <input id="password"
+                 type="password"
+                 placeholder="Парола"
+                 formControlName="password">
+          <ng-template [ngIf]="password.touched && password.invalid && password.errors">
+            <span class="hint" *ngIf="password.errors.required">* Паролата е задължителна.</span>
+            <span class="hint" *ngIf="password.errors.hasDigit">* Паролата трябва да съдържа поне 1 цифра.</span>
+            <span class="hint" *ngIf="password.errors.hasAlphabeticCharacters">* Паролата трябва да съдържа поне 1 буква.</span>
+            <span class="hint"
+                  *ngIf="password.errors.minlength">* Паролата трябва да бъде поне {{ password.errors?.minlength?.requiredLength }}
+              символа.</span>
+            <span class="hint"
+                  *ngIf="password.errors.maxlength">* Паролата не трябва да бъде повече от {{ password.errors?.maxlength?.requiredLength }}
+              символа.</span>
+          </ng-template>
+        </div>
+        <div class="form-control" *ngIf="isRegister">
+          <label for="confirmed">Потвърди паролата</label>
+          <input id="confirmed"
+                 type="password"
+                 placeholder="Потвърди паролата"
+                 formControlName="confirmed">
+          <ng-template [ngIf]="confirmed.touched && passwords.invalid && passwords.errors">
+            <span class="hint" *ngIf="passwords.errors.isPasswordConfirmed">* Паролата не съвпада.</span>
+          </ng-template>
+        </div>
+      </div>
+      <button class="btn-solid" *ngIf="!isLoading">{{ isRegister ? 'Регистрирай се' : 'Влез'}}</button>
+    </form>
+    <app-spinner id="spinner" *ngIf="isLoading"></app-spinner>
+  </div>
+</div>

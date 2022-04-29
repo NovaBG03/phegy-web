@@ -1,0 +1,13 @@
+<div class="heading">
+  <h1 class="title">{{username}}</h1>
+</div>
+
+<div class="profile">
+  <app-profile-image-card [username]="username"></app-profile-image-card>
+  <app-achievements class="achievements" [username]="username"></app-achievements>
+</div>
+
+<app-image-list
+  [publisher]="username"
+  [showFilterTypeControls]="(authService.user | async)?.username === username"
+  [orderOptions]="orderOptions"></app-image-list>

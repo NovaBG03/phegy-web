@@ -1,0 +1,3 @@
+<app-alert-pop-up *ngIf="activeAlert"
+                  [model]="activeAlert"
+                  (buttonPressed)="activeAlert = null"></app-alert-pop-up>

@@ -1,0 +1,38 @@
+.profile-image-card {
+  background: var(--color-main);
+  border-radius: 0.5rem;
+  padding: 1.25em;
+  max-width: 28em;
+}
+
+.profile-image-card img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+[class^='btn'], div[class*='btn'] {
+  width: 100%;
+  margin: 0.625em 0 0;
+}
+
+.btn-upload {
+  --btn-color: var(--color-info);
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-upload:hover,
+.btn-upload:focus {
+  color: var(--color-text);
+}
+
+/* Responsive */
+/* Large desktop */
+@media (min-width: 75rem) {
+  .profile-image-card {
+    max-width: 25em;
+  }
+}

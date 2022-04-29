@@ -1,0 +1,55 @@
+<div class="heading">
+  <h1 class="title">Качи снимка</h1>
+</div>
+<form *ngIf="!isLoading" class="phegy-form" [formGroup]="imageForm" (ngSubmit)="onSubmit()">
+  <div class="form-group">
+    <div class="title">Информация за снимката</div>
+    <label class="small-label" for="title">Заглавие</label>
+    <input class="input" type="text" id="title" formControlName="title">
+    <ng-template [ngIf]="title.touched && title.invalid && title.errors">
+      <span class="hint" *ngIf="title.errors.notOnlyWhitespace">* Заглавието не може да бъде празно.</span>
+      <span class="hint" *ngIf="title.errors.required">* Заглавието е задължително.</span>
+      <span class="hint"
+            *ngIf="title.errors.minlength">* Заглавието трябва да бъде поне {{ title.errors?.minlength?.requiredLength }}
+        символа.</span>
+      <span class="hint"
+            *ngIf="title.errors.maxlength">* Заглавието не трябва да бъде повече от {{ title.errors?.maxlength?.requiredLength }}
+        символа.</span>
+    </ng-template>
+  </div>
+  <div class="form-group">
+    <label class="small-label" for="description">Описание</label>
+    <input class="input" type="text" id="description" formControlName="description">
+    <ng-template [ngIf]="description.touched && description.invalid && description.errors">
+      <span class="hint"
+            *ngIf="description.errors.minlength">
+        * Описанието трябва да бъде поне {{ description.errors?.minlength?.requiredLength }}
+        символа.</span>
+      <span class="hint"
+            *ngIf="description.errors.maxlength">
+        * Описанието не трябва да бъде повече от {{ description.errors?.maxlength?.requiredLength }}
+        символа.</span>
+    </ng-template>
+  </div>
+  <div class="form-group">
+    <label class="small-label">Снимка</label>
+    <div class="file-upload">
+      <label class="input" for="image-input" (click)="imageFileInput.value = ''">
+        {{ imageFile ? imageFileName : 'Няма избрана снимка'}}
+        <input id="image-input"
+               type="file"
+               accept="image/jpeg,image/png"
+               (change)="onSelect(asInputElement($event.target).files)"
+               #imageFileInput>
+      </label>
+    </div>
+  </div>
+  <button class="btn-outline" type="submit">Качи</button>
+</form>
+
+<app-spinner id="spinner" *ngIf="isLoading"></app-spinner>
+
+<app-image-resizer *ngIf="isResizing && imageFile"
+                   [image]="imageFile"
+                   (imageResized)="setResizedImage($event)">
+</app-image-resizer>

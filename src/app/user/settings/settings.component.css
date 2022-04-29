@@ -1,0 +1,59 @@
+.content-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(8.5rem, 0.5fr));
+  align-items: start;
+  gap: 1.5rem 0;
+}
+
+.content-grid>* {
+  min-width: 18em;
+}
+
+.profile {
+  grid-column: span 2;
+}
+
+.settings {
+  grid-column: span 3;
+  grid-row: span 2;
+  padding: 0 1em;
+  margin: 0 2rem;
+}
+
+.achievements {
+  grid-column: span 2;
+}
+
+/* Responsive */
+/* Large desktop */
+@media (min-width: 75rem) {
+  .settings {
+    margin: 0 5%;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .content-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem 0;
+  }
+
+  .content-grid>* {
+    grid-column: span 1 !important;
+    width: min(80%, 25em);
+    margin: auto;
+    padding: 0;
+  }
+
+  .settings {
+    order: 3;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 30rem) {
+  .content-grid>* {
+    width: 95%;
+  }
+}

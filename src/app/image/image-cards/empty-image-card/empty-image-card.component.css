@@ -1,0 +1,75 @@
+.header-content {
+  cursor: default;
+  width: 60%;
+}
+
+.empty-user-image {
+  width: 3.375rem;
+  height: 3.125rem;
+  border-radius: 0.5rem;
+  background: var(--color-info);
+  display: inline-block;
+}
+
+.empty-name {
+  width: 100%;
+  height: 1.125rem;
+  border-radius: 0.5rem;
+  background: var(--color-info);
+  display: inline-block;
+}
+
+.empty-description {
+  width: 70%;
+  height: 0.875rem;
+  border-radius: 0.5rem;
+  background: var(--color-info);
+  display: inline-block;
+}
+
+.empty-options {
+  margin: 0 0 auto auto;
+  width: 0.875rem;
+}
+
+.empty-image-card {
+  position: relative;
+  margin: 1.25rem 0;
+  aspect-ratio: 25 / 18;
+  background-color: var(--color-info);
+  border-radius: 0.5rem;
+}
+
+.empty-image-card .empty-image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.empty-image .fill {
+  fill: var(--color-text-unselected);
+}
+
+.btn-empty {
+  display: inline;
+  width: 100%;
+  height: 3.125rem;
+  background-color: var(--color-info);
+  border-radius: 0.5rem;
+  border: none;
+  cursor: default;
+  position: relative;
+}
+
+.btn-empty:after {
+  content: '';
+  position: absolute;
+  width: 6.25rem;
+  height: 1.25rem;
+  border-radius: 0.5rem;
+  background: var(--color-text-unselected);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

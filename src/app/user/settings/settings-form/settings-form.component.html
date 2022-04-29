@@ -1,0 +1,82 @@
+<form *ngIf="userInfo"
+      class="phegy-form"
+      [formGroup]="userInfoForm"
+      (ngSubmit)="updateUserInfo()">
+  <div class="title visually-hidden">Настройки на профила</div>
+  <div class="form-group">
+    <label class="small-label" for="username">Потребителско име</label>
+    <input readonly [ngClass]="{highlighted: isUsernameChanged}" class="input" type="text" id="username"
+           formControlName="username">
+    <ng-template [ngIf]="username.touched && username.invalid && username.errors">
+      <span class="hint" *ngIf="username.errors.notOnlyWhitespace">* Потребителското име не трябва да е празно.</span>
+      <span class="hint" *ngIf="username.errors.required">* Потребителското име е задължително.</span>
+      <span class="hint"
+            *ngIf="username.errors.minlength as error">* Потребителското име трябва да бъде поне {{ error.requiredLength }}
+        символа.</span>
+      <span class="hint"
+            *ngIf="username.errors.maxlength as error">* Потребителското име не трябва да бъде повече от {{ error.requiredLength }}
+        символа.</span>
+    </ng-template>
+  </div>
+  <div class="form-group">
+    <label class="small-label" for="email">Е-поща</label>
+    <input [ngClass]="{highlighted: isEmailChanged}" class="input" type="text" id="email" formControlName="email">
+    <ng-template [ngIf]="email.touched && email.invalid && email.errors">
+      <span class="hint" *ngIf="email.errors.email">* Трябва да бъде валидна електронна поща.</span>
+      <span class="hint" *ngIf="email.errors.required">* Електронната поща е задължителна.</span>
+      <span class="hint"
+            *ngIf="email.errors.minlength as error">* Електронната поща трябва да бъде поне {{ error.requiredLength }}
+        символа.</span>
+      <span class="hint"
+            *ngIf="email.errors.maxlength as error">* Електронната поща не трябва да бъде повече от {{ error.requiredLength }}
+        символа.</span>
+    </ng-template>
+  </div>
+  <button [ngClass]="{'visually-hidden': !(userInfoForm.valid && isUserInfoChanged)}"
+          [disabled]="!(userInfoForm.valid && isUserInfoChanged)"
+          class="btn-outline" type="submit">Обнови профила
+  </button>
+</form>
+<form class="phegy-form form-group" (ngSubmit)="changePassword()" [formGroup]="passwordsForm">
+  <div class="title">Промени паролата</div>
+  <div class="form-group">
+    <label class="small-label" for="current-password">Сегашна парола</label>
+    <input class="input" type="password" id="current-password" formControlName="current">
+    <ng-template [ngIf]="currentPass.touched && currentPass.invalid && currentPass.errors">
+      <span class="hint" *ngIf="currentPass.errors.required">* Сегашната парола е задължителна.</span>
+      <span class="hint"
+            *ngIf="currentPass.errors.minlength as error">* Сегашната парола трябва да бъде поне {{ error.requiredLength }}
+        символа.</span>
+      <span class="hint"
+            *ngIf="currentPass.errors.maxlength as error">* Сегашната парола не трябва да бъде повече от {{ error.requiredLength }}
+        символа.</span>
+    </ng-template>
+  </div>
+  <div class="form-group">
+    <label class="small-label" for="new-password">Нова парола</label>
+    <input class="input" type="password" id="new-password" formControlName="new">
+    <ng-template [ngIf]="newPass.touched && newPass.invalid && newPass.errors">
+      <span class="hint" *ngIf="newPass.errors.required">* Новата парола е задължителна.</span>
+      <span class="hint" *ngIf="newPass.errors.hasDigit">* Новата парола трябва да съдържа поне 1 цифра.</span>
+      <span class="hint"
+            *ngIf="newPass.errors.hasAlphabeticCharacters">* Новата парола трябва да съдържа поне 1 буква.</span>
+      <span class="hint"
+            *ngIf="newPass.errors.minlength as error">* Новата парола трябва да бъде поне {{ error.requiredLength }}
+        символа.</span>
+      <span class="hint"
+            *ngIf="newPass.errors.maxlength as error">* Новата парола не трябва да бъде повече от {{ error.requiredLength }}
+        символа.</span>
+    </ng-template>
+  </div>
+  <div class="form-group">
+    <label class="small-label" for="confirm-password">Потвърди новата парола</label>
+    <input class="input" type="password" id="confirm-password" formControlName="confirm">
+    <ng-template [ngIf]="confirmPass.touched && passwordsForm.invalid && passwordsForm.errors">
+      <span class="hint" *ngIf="passwordsForm.errors.isPasswordConfirmed">* Паролите не съвпадат.</span>
+    </ng-template>
+  </div>
+  <button [ngClass]="{'visually-hidden': !(passwordsForm.touched && passwordsForm.valid)}"
+          [disabled]="!(passwordsForm.touched && passwordsForm.valid)"
+          class="btn-outline" type="submit">Промени паролата
+  </button>
+</form>

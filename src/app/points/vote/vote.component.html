@@ -1,0 +1,34 @@
+<div class="dark-bg"></div>
+<div class="phegy-card fixed">
+  <ng-container *ngIf="image && !isLoading; else loading">
+    <div class="message">
+      <span class="secondary-colored-text">Гласувай</span> за снимката на {{ image.publisherUsername }}
+    </div>
+    <div class="danger-colored-text error-message">{{ errMessage }}</div>
+    <form class="phegy-form"
+          (ngSubmit)="vote()"
+          [formGroup]="voteForm">
+      <div class="form-container">
+        <div class="form-group">
+          <label for="amount" class="small-label">Точки</label>
+          <input type="number" step="0.1" min="0" class="input" id="amount" placeholder="Точки"
+                 formControlName="points">
+          <ng-template [ngIf]="pointsControl.invalid && pointsControl.errors">
+            <span *ngIf="pointsControl.errors.required" class="hint">* Точките са задължителни.</span>
+            <span *ngIf="pointsControl.errors.min as error"
+                  class="hint">* Точките трябва да бъдат поне {{ error.min }}.</span>
+            <span *ngIf="pointsControl.errors.max as error"
+                  class="hint">* Точките не могат да бъдат повече от {{ error.max }}.</span>
+          </ng-template>
+        </div>
+      </div>
+      <div class="button-group">
+        <button type="button" class="btn-solid btn-danger" (click)="onClose()">Откажи</button>
+        <button type="submit" class="btn-solid" [disabled]="voteForm.invalid || errMessage">Гласувай</button>
+      </div>
+    </form>
+  </ng-container>
+  <ng-template #loading>
+    <app-spinner></app-spinner>
+  </ng-template>
+</div>

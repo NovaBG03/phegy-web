@@ -1,0 +1,59 @@
+.phegy-form {
+  padding: 0 1em;
+  max-width: 40em;
+  margin-inline: auto;
+}
+
+input[type="file"] {
+  display: none;
+}
+
+.file-upload>.input {
+  position: relative;
+  padding-left: 8.75em;
+
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-upload>.input:before {
+  content: 'Избери';
+  position: absolute;
+  top: 0.375rem;
+  bottom: 0.3125rem;
+  left: 0.625rem;
+  padding: 0.45rem 1.875rem;
+  background-color: var(--color-secondary);
+  color: var(--color-white);
+  border: 0;
+  border-radius: 0.5rem;
+  font-size: 1.125rem;
+  cursor: pointer;
+}
+
+#spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .btn-outline {
+    margin: auto;
+    display: block;
+  }
+
+  form .hint {
+    text-align: center;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 30rem) {
+  .btn-outline {
+    width: 80%;
+  }
+}

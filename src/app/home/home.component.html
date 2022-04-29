@@ -1,0 +1,6 @@
+<div class="heading">
+  <h1 class="title">Галерия</h1>
+  <button *ngIf="authService.user | async" class="btn-create" routerLink="/upload">+ Качи снимка</button>
+</div>
+
+<app-image-list [orderOptions]="orderOptions"></app-image-list>

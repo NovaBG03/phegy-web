@@ -1,0 +1,11 @@
+<div class="notification" [ngClass]="notification.category">
+  <div class="title">
+    <span>{{ notificationService.getCategoryIcon(notification.category) }}</span>
+    {{ notification.title }}</div>
+  <div class="message">{{ notification.message }}</div>
+  <div class="options">
+    <div class="option disabled" *ngIf="secondsLeft">Може да поискате нов след {{ secondsLeft * 1000 | date:'m:ss' }}</div>
+    <button class="option" (click)="requestVerification()" *ngIf="!secondsLeft">Поискай нов</button>
+    <button class="option" [routerLink]="['/settings']">Смени е-поща</button>
+  </div>
+</div>

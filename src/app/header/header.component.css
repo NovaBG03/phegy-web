@@ -1,0 +1,215 @@
+.header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  align-items: center;
+  background: var(--color-main);
+  z-index: 10;
+  border-bottom: 0.125em solid var(--color-background);
+}
+
+.logo {
+  min-width: 8.125rem;
+  overflow: hidden;
+  height: 1.875rem;
+  align-items: center;
+  cursor: pointer;
+}
+
+.logo img {
+  height: 1.875rem;
+}
+
+.logo-text {
+  font-size: 1.25rem;
+  padding-left: 0.25em;
+  height: 1.875rem;
+  display: inline-block;
+  vertical-align: middle;
+  transform: translateY(-0.5em);
+}
+
+ul,
+ul li,
+ul ul li {
+  padding: 0;
+  text-indent: 0;
+  list-style-type: none;
+}
+
+.navigation {
+  transform: translateY(-0.2rem);
+}
+
+.links {
+  margin: 0;
+}
+
+.link:first-of-type {
+  margin-left: 0;
+}
+
+.link {
+  margin: 0 0 0 2.5rem;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.link-hidden {
+  display: none;
+}
+
+.link-text {
+  color: var(--color-text-unselected);
+  text-decoration: none;
+}
+
+.link.active .link-text {
+  color: var(--color-text);
+}
+
+.icon {
+  transform: translateY(0.4rem);
+  padding-right: 0.3125em;
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.link.active .icon-fill {
+  fill: var(--color-text);
+}
+
+.link:not(.active):hover .link-text,
+.link:not(.active):hover .icon {
+  color: var(--color-text-unselected);
+  opacity: 0.6;
+}
+
+.user-info {
+  position: relative;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  min-width: 10.625rem;
+}
+
+.profile-picture {
+  height: 2.5rem;
+  border-radius: 0.5rem;
+  aspect-ratio: 1 / 1;
+  margin-left: 0.3125rem;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.arrow-down-icon {
+  width: 2rem;
+  height: 2rem;
+  margin-left: 0.3125rem;
+  cursor: pointer;
+}
+
+.arrow-down-icon.active {
+  transform: rotate(180deg);
+}
+
+.arrow-down-icon .arrow-down-path {
+  fill: var(--color-text);
+}
+
+.arrow-down-icon.active .arrow-down-path {
+  fill: var(--color-secondary);
+}
+
+.authentication>.link {
+  margin: 0 0 0 1.5rem;
+}
+
+.authentication .link-text {
+  color: var(--color-text-unselected);
+  text-decoration: none;
+}
+
+.authentication .btn-outline {
+  padding: 0.3125em 0.625em;
+}
+
+.btn-link {
+  color: var(--color-text);
+  text-decoration: none;
+}
+
+.btn-link:hover {
+  color: var(--color-text-unselected);
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .user-info {
+    justify-content: flex-end;
+  }
+
+  .profile-picture {
+    display: none;
+  }
+
+  .arrow-down-icon {
+    display: none;
+  }
+
+  .navigation {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: var(--bottom-navigation-height);
+    padding-bottom: 0.125em;
+    background: var(--color-main);
+    transform: translateY(0.125em);
+    border-top: 0.125em solid var(--color-background);
+    z-index: 10;
+  }
+
+  .links {
+    display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-evenly;
+    align-content: center;
+  }
+
+  .link {
+    margin: 0;
+    width: 3.625rem;
+    height: 2.625rem;
+  }
+
+  .authentication .link {
+    width: auto;
+    height: auto;
+  }
+
+  .link-hidden {
+    display: inline-block;
+  }
+
+  .icon {
+    display: block;
+    margin: 0 auto;
+    width: 2rem;
+    height: 2rem;
+    transform: translate(0.1875rem, 0.1875rem);
+  }
+
+  .link-text {
+    font-size: 0.75rem;
+    display: block;
+    margin: 0.125rem auto 0;
+    text-align: center;
+    height: 1rem;
+    overflow: hidden;
+  }
+}

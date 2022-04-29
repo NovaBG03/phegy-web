@@ -1,0 +1,23 @@
+.input.highlighted {
+  outline: 0.1875em solid var(--color-text-unselected);
+  outline-offset: -0.1875em;
+}
+
+.input:read-only {
+  cursor: text;
+  background: var(--color-background);
+  outline: 0.1875em solid var(--color-info);
+  outline-offset: -0.1875em;
+}
+
+.btn-outline {
+  display: block;
+  margin: auto;
+}
+
+/* Responsive */
+@media (max-width: 48rem) {
+  .phegy-form .input {
+    width: 100%;
+  }
+}

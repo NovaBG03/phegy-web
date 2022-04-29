@@ -1,0 +1,10 @@
+<div class="points-bag"
+     (mouseenter)="isTooltipOpen = true"
+     (mouseleave)="isTooltipOpen = false">
+  <ng-container *ngIf="pointsBag; else loading">
+    <div class="points">Точки: <span class="points-value">{{ pointsBag.points | number: '0.0-1' | noComma }}</span></div>
+  </ng-container>
+  <ng-template #loading>
+    <div class="points">Зарежда...</div>
+  </ng-template>
+</div>

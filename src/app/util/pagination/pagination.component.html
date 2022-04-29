@@ -1,0 +1,45 @@
+<div class="page-navigation-block no-select">
+  <ul class="page-selector">
+    <li class="btn-page visually-hidden-phone" *ngIf="currentPage != 1"
+        (click)="moveToPage(currentPage - 1)">
+      <a><</a>
+    </li>
+    <li class="btn-page" *ngIf="currentPage >= 3"
+        (click)="moveToPage(1)">
+      <a>1</a>
+    </li>
+    <li class="btn-page" *ngIf="currentPage >= 4"
+        [ngClass]="{inactive: firstDots === '...'}"
+        (click)="moveToPage(firstDots)">
+      <a>{{firstDots}}</a>
+    </li>
+    <li class="btn-page" *ngIf="currentPage > 1"
+        (click)="moveToPage(currentPage - 1)">
+      <a>{{ currentPage - 1 }}</a>
+    </li>
+    <li class="btn-page active">
+      <a>{{ currentPage }}</a>
+    </li>
+    <li class="btn-page" *ngIf="lastPage - currentPage > 1"
+        (click)="moveToPage(currentPage + 1)">
+      <a>{{ currentPage + 1 }}</a>
+    </li>
+    <li class="btn-page" *ngIf="currentPage == 1 && lastPage > 4"
+        (click)="moveToPage(currentPage + 2)">
+      <a>{{ currentPage + 2 }}</a>
+    </li>
+    <li class="btn-page" *ngIf="lastPage - currentPage > 2"
+        [ngClass]="{inactive: secondDots === '...'}"
+        (click)="moveToPage(secondDots)">
+      <a>{{secondDots}}</a>
+    </li>
+    <li class="btn-page" *ngIf="currentPage != lastPage"
+        (click)="moveToPage(lastPage)">
+      <a>{{ lastPage }}</a>
+    </li>
+    <li class="btn-page visually-hidden-phone" *ngIf="currentPage != lastPage"
+        (click)="moveToPage(currentPage + 1)">
+      <a>></a>
+    </li>
+  </ul>
+</div>

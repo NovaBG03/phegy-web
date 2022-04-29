@@ -1,0 +1,567 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans+Caption:wght@400;700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+/* Theming */
+
+:root {
+  /* Typography */
+  --font-family-primary: 'Roboto', sans-serif;
+  --font-family-secondary: 'PT Sans Caption', sans-serif;
+
+  /* Font Weights */
+  --weight-regular: 400;
+  --weight-medium: 600;
+
+  /* Design Elements */
+  --transition: 300ms ease-in-out;
+  --bottom-navigation-height: 3.875rem;
+
+  /* Drop Shadows */
+  --box-shadow-card: rgba(0, 0, 0, 0.1) 0 0.25rem 0.375rem -0.0625rem,
+  rgba(0, 0, 0, 0.06) 0 0.125rem 0.25rem -0.0625rem;
+  --box-shadow-notification: rgba(50, 50, 93, 0.25) 0 0.8125rem 1.6875rem -0.3125rem,
+  rgba(0, 0, 0, 0.3) 0 0.5em 1rem -0.5rem;
+}
+
+.light-theme {
+  --color-main: hsl(0, 0%, 100%);
+  --color-background: hsl(217, 24%, 93%);
+  --color-info: hsl(218, 19%, 89%);
+  --color-info-transparent: hsla(218, 19%, 89%, 0.95);
+  --color-text: hsl(216, 11%, 17%);
+  --color-text-unselected: hsl(202, 7%, 67%);
+}
+
+.dark-theme {
+  --color-main: hsl(240, 13%, 13%);
+  --color-background: hsl(230, 14%, 9%);
+  --color-info: hsl(240, 13%, 20%);
+  --color-info-transparent: hsl(240, 13%, 20%, 0.95);
+  --color-text: hsl(0, 0%, 90%);
+  --color-text-unselected: hsl(240, 7%, 40%);
+}
+
+.app {
+  /* Additional Colors */
+  --color-white: hsl(0, 0%, 100%);
+  --color-secondary: #7785ac;
+  --color-danger: #d1105a;
+  --color-success: #5b2a86;
+  --cropper-outline-color: rgba(0, 0, 0, 0.45);
+  --cropper-overlay-color: var(--color-background);
+}
+
+/* Reset */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  color: var(--color-text);
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  background: var(--color-background);
+}
+
+/* Type Specs */
+
+
+/* Accessibility */
+.visually-hidden {
+  padding: 0;
+  width: 1px;
+  height: 1px;
+  position: absolute;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(0, 0, 99.9%, 99, 9%);
+  overflow: hidden;
+  border: 0;
+}
+
+.no-select {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.no-scroll {
+  overflow: hidden;
+}
+
+.main-container {
+  padding: 1rem 3.75rem;
+}
+
+.heading {
+  display: flex;
+  flex-flow: row nowrap;
+  align-content: center;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0 1rem 0.3125rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.heading .title {
+  float: left;
+  font-size: clamp(1.625rem, 5vw, 2.75rem);
+  margin: auto 0;
+  font-weight: var(--weight-medium);
+}
+
+/* Notification Card */
+.notification {
+  --notification-color: var(--color-secondary);
+  width: 100%;
+  margin-top: 0.5rem;
+  padding: 0.75em 1em;
+  border-radius: 0.5rem;
+  border: 0.125em solid var(--color-info);
+  background: var(--color-main);
+  box-shadow: var(--box-shadow-notification);
+}
+
+.notification.danger {
+  --notification-color: var(--color-danger);
+}
+
+.notification.success {
+  --notification-color: var(--color-success);
+}
+
+.notification > .title {
+  display: inline-block;
+  color: var(--notification-color);
+}
+
+.notification > .message {
+  margin-top: 0.5em;
+  padding-left: 0.3em;
+}
+
+.notification > .options {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+  gap: 1.5em;
+  margin-top: 0.25rem;
+}
+
+.notification .option {
+  font-family: var(--font-family-primary);
+  font-size: 1rem;
+  padding: 0.2em;
+  border: unset;
+  background: unset;
+  cursor: pointer;
+}
+
+.notification .option.disabled {
+  cursor: default;
+}
+
+
+/* Phegy Form */
+.phegy-form {
+  margin: 0 0 1.25rem 0;
+}
+
+.phegy-form .form-group {
+  margin-bottom: 1rem;
+}
+
+.phegy-form .title {
+  margin-bottom: 0.625rem;
+  font-size: 1.0625rem;
+}
+
+.small-label {
+  font-size: 0.875rem;
+  margin: 0 0 0.625rem 0;
+}
+
+.phegy-form .input {
+  display: block;
+  font-size: 1rem;
+  width: 100%;
+  min-width: 18.75rem;
+  height: 3rem;
+  padding: 1em 1.25em;
+  margin: 0.625rem 0 0.1875rem 0;
+  font-weight: var(--weight-regular);
+  background: var(--color-info);
+  border-radius: 0.5rem;
+  border: none;
+  outline: none;
+}
+
+form .hint {
+  display: block;
+  color: var(--color-danger);
+  font-size: 0.8125rem;
+}
+
+/* Phegy Card */
+.dark-bg {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 20;
+  opacity: 0.7;
+}
+
+.phegy-card {
+  min-width: 30%;
+  text-align: center;
+  background: var(--color-main);
+  padding: 2.5em 3.125em 1.875em;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow-card);
+}
+
+.phegy-card.fixed {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  overflow-y: auto;
+  max-height: 95%;
+  z-index: 20;
+}
+
+.phegy-card > .banner {
+  width: 6.25rem;
+}
+
+.phegy-card > .banner .banner-success {
+  fill: var(--color-success);
+}
+
+.phegy-card > .banner .banner-danger {
+  fill: var(--color-danger);
+}
+
+.phegy-card > .message {
+  font-size: 2rem;
+  line-height: 0.95;
+  margin: 1.25rem 0 0.625rem;
+}
+
+.phegy-card > .description {
+  margin-bottom: 1.25rem;
+}
+
+/* Drop Down*/
+.drop-down {
+  background: var(--color-main);
+  border-radius: 0.5rem;
+  border: 0.125rem solid var(--color-info);
+  box-shadow: 0 6.25rem 5rem rgba(0, 0, 0, 0.07),
+  0 2.5625rem 2rem rgba(0, 0, 0, 0.05),
+  0 1.375rem 1.125rem rgba(0, 0, 0, 0.04),
+  0 0.75rem 0.625rem rgba(0, 0, 0, 0.03),
+  0 0.375rem 0.3125rem rgba(0, 0, 0, 0.03),
+  0 0.125rem 0.125rem rgba(0, 0, 0, 0.02);
+}
+
+.drop-down ul {
+  margin: 0;
+  padding: 0 0.625em;
+  list-style-type: none;
+  text-indent: 0;
+}
+
+.drop-down li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  margin: 0.5rem 0;
+  padding: 0.75em 0.625em;
+  cursor: pointer;
+  transition: var(--transition);
+  border-radius: 0.5rem;
+}
+
+.drop-down li.active {
+  background: var(--color-background);
+  outline: 0.25em solid var(--color-background);
+}
+
+.drop-down li:hover {
+  background: var(--color-info);
+}
+
+.drop-down li > a {
+  font-size: 1em;
+  margin-left: 0.625em;
+}
+
+.drop-down .icon {
+  width: 1.5em;
+  height: 1.5em;
+}
+
+.drop-down .icon-fill {
+  fill: var(--color-text);
+}
+
+.drop-down .separator {
+  width: 100%;
+  font-size: 1em;
+  height: 0.1em;
+  background: var(--color-info);
+  margin: auto;
+}
+
+/* Buttons */
+[class^='btn'], [class*='btn'] {
+  font-family: var(--font-family-secondary);
+}
+
+.btn-outline {
+  --btn-color: var(--color-secondary);
+  display: inline;
+  width: 15.5em;
+  height: 3.125em;
+  font-size: 1rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-text);
+  background: transparent;
+  border: 0.1875em solid var(--btn-color);
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+
+  transition: var(--transition);
+}
+
+.btn-outline:disabled {
+  opacity: 0.5;
+  cursor: default;
+  border: 0.25em solid var(--btn-color);
+}
+
+.btn-outline:hover,
+.btn-outline:focus {
+  color: var(--color-white);
+  background: var(--btn-color);
+}
+
+.btn-outline:disabled:hover,
+.btn-outline:disabled:focus {
+  color: var(--color-text);
+  background: transparent;
+}
+
+.btn-solid {
+  --btn-color: var(--color-secondary);
+  display: inline;
+  width: 11.5em;
+  height: 3.125em;
+  font-size: 0.9375rem;
+  font-weight: var(--weight-medium);
+  color: var(--color-white);
+  background: var(--btn-color);
+  border: 0.2em solid var(--btn-color);
+  border-radius: 0.5rem;
+  outline: none;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-solid:hover,
+.btn-solid:focus {
+  border: 0.2em solid var(--color-main);
+}
+
+.btn-solid:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.btn-solid:disabled:hover,
+.btn-solid:disabled:focus {
+  border: 0.2em solid var(--btn-color);
+}
+
+.btn-success {
+  --btn-color: var(--color-success);
+}
+
+.btn-danger {
+  --btn-color: var(--color-danger);
+}
+
+.btn-grey {
+  --btn-color: var(--color-text-unselected);
+}
+
+.button-group {
+  display: flex;
+  margin-top: 1.25rem;
+  gap: 0.625em;
+  justify-content: flex-end;
+}
+
+/* Custom check box */
+.big-checkbox {
+  display: inline-block;
+  margin: 0 0.625rem;
+  padding: 0.625em 1.25em;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-weight: var(--weight-medium);
+  box-shadow: var(--box-shadow-card);
+  background: var(--color-info);
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  border: none;
+}
+
+.big-checkbox:not(.active):hover {
+  background: var(--color-text-unselected);
+}
+
+.big-checkbox.active {
+  background: var(--color-secondary);
+  color: var(--color-white);
+}
+
+.big-checkbox > input[type=checkbox] {
+  display: none;
+}
+
+
+/* Text colors */
+.success-colored-text {
+  color: var(--color-success);
+  fill: var(--color-success);
+}
+
+.danger-colored-text {
+  color: var(--color-danger);
+  fill: var(--color-danger);
+}
+
+.secondary-colored-text {
+  color: var(--color-secondary);
+  fill: var(--color-secondary);
+}
+
+
+/* Image Cropper */
+.ngx-ic-source-image {
+  background: repeat url("/assets/images/transparent_bg.jpg");
+}
+
+.ngx-ic-square {
+  background: var(--color-text) !important;
+  border: 0.0625em solid var(--color-text-unselected) !important;
+  height: 0.375rem;
+  width: 0.375rem;
+}
+
+.ngx-ic-cropper:after {
+  border: 0.125em solid var(--color-text) !important;
+  z-index: 0 !important;
+}
+
+/* Responsive */
+/* Large desktop */
+@media (min-width: 75rem) {
+  .main-container {
+    padding: 1rem 6.875rem;
+  }
+}
+
+/* Portrait tablet to landscape and desktop */
+@media (min-width: 48.0625rem) and (max-width: 61.1875rem) {
+  .main-container {
+    padding: 1em 1.875em;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .main-container {
+    padding: 1em 1.25em;
+  }
+
+  .phegy-form .form-group {
+    margin-bottom: 1.25em;
+  }
+
+  .small-label {
+    display: block;
+    text-align: center;
+  }
+
+  .phegy-form .input {
+    width: 26.25em;
+    margin: 0.625rem auto 0.1875rem;
+  }
+
+  .phegy-form .title {
+    text-align: center;
+  }
+
+  .phegy-card {
+    position: absolute;
+    min-width: 80%;
+  }
+}
+
+/* Landscape phones and down */
+@media (max-width: 30rem) {
+  .main-container {
+    padding: 1em 0.625em;
+  }
+
+  .phegy-form .input {
+    width: 100%;
+    margin: 0.625rem 0 0.1875rem;
+    min-width: revert;
+  }
+
+  .phegy-card {
+    width: 95%;
+    height: auto;
+    padding: 1.5625em 0.25em 1.25em;
+  }
+
+  .visually-hidden-phone {
+    padding: 0;
+    width: 1px;
+    height: 1px;
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(0, 0, 99.9%, 99, 9%);
+    overflow: hidden;
+    border: 0;
+  }
+
+  .big-checkbox {
+    margin: 0 0.4375rem;
+    padding: 0.625em 0.8125em;
+  }
+}

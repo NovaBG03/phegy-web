@@ -1,0 +1,39 @@
+<div class="filter-controls no-select">
+  <app-image-order-filter
+    *ngIf="orderOptions.isTimeOrderAllowed || orderOptions.isTippedOrderAllowed || orderOptions.isTopFilterAllowed"
+    [orderOptions]="orderOptions"></app-image-order-filter>
+
+  <div style="text-align: center" *ngIf="showFilterTypeControls">
+    <label class="big-checkbox" [ngClass]="{active: approvedCheckbox.checked}" for="approved">Одобрени
+      <input type="checkbox" id="approved" [ngModel]="approvedCheckboxValue" (change)="approvedOnlyToggle($event)"
+             #approvedCheckbox>
+    </label>
+    <label class="big-checkbox" [ngClass]="{active: pendingCheckbox.checked}" for="pending">Изчакващи одобрение
+      <input type="checkbox" id="pending" [ngModel]="pendingCheckboxValue" (change)="pendingOnlyToggle($event)"
+             #pendingCheckbox>
+    </label>
+  </div>
+</div>
+
+<div class="image-list">
+  <ngx-masonry class="image-masonry" *ngIf="isLoading" [options]="masonryOptions">
+    <app-empty-image *ngFor="let el of getArray(size)"
+                    ngxMasonryItem></app-empty-image>
+  </ngx-masonry>
+
+  <ng-template [ngIf]="!isLoading">
+    <ngx-masonry class="image-masonry" [ordered]="true" [options]="masonryOptions" [updateLayout]="!!(authService.user | async)">
+      <app-image-card *ngFor="let image of images"
+                     ngxMasonryItem
+                     [image]="image"
+                     [isModeratorMode]="isModeratorMode"
+                     (updated)="loadImages()"></app-image-card>
+    </ngx-masonry>
+    <div class="not-found-center" *ngIf="!images || !images.length">Няма изображения</div>
+  </ng-template>
+</div>
+
+<app-pagination *ngIf="!isLoading && imagesTotalCount"
+                [size]="size" [currentPage]="currentPage" [elementsCount]="imagesTotalCount"
+                (nextPage)="moveToPage($event)"
+                (invalidPage)="moveToPage(1)"></app-pagination>

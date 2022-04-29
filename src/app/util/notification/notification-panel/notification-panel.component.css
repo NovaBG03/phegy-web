@@ -1,0 +1,93 @@
+.notification-panel {
+  position: fixed;
+  left: 0.5em;
+  bottom: 1em;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  gap: 0.25em;
+  width: 27.5em;
+  max-width: calc(100% - 1em);
+  z-index: 100;
+}
+
+.notification-icon {
+  --icon-size: 3.5rem;
+  --icon-bg-color: var(--color-main);
+  --icon-fill-color: var(--color-text-unselected);
+  --icon-count-color: var(--color-secondary);
+  display: block;
+  position: relative;
+  flex-shrink: 0;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  border: calc(var(--icon-size) / 28) solid var(--color-info);
+  padding: calc(var(--icon-size) / 7);
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow-notification);
+  background: var(--icon-bg-color);
+  cursor: pointer;
+  margin-top: 0.5em;
+}
+
+.notification-icon:active {
+  --icon-bg-color: var(--color-info);
+  opacity: 0.9;
+  transform: translate(0, 2%);
+}
+
+.notification-icon.info {
+  --icon-count-color: var(--color-secondary);
+}
+
+.notification-icon.danger {
+  --icon-count-color: var(--color-danger);
+}
+
+.notification-icon.success {
+  --icon-count-color: var(--color-success);
+}
+
+.notification-icon>.count {
+  position: absolute;
+  top: -0.25em;
+  right: -0.25em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(var(--icon-size) / 4);
+  aspect-ratio: 1 / 1;
+  width: 1.7em;
+  padding: 0 0.2em;
+  font-weight: var(--weight-medium);
+  border-radius: 0.5rem;
+  background: var(--icon-count-color);
+  color: var(--color-white);
+  overflow: hidden;
+  transition: var(--transition);
+}
+
+.notification-icon svg {
+  fill: var(--icon-fill-color);
+}
+
+.notifications {
+  display: grid;
+}
+
+/* Responsive */
+/* Large desktop */
+@media (min-width: 75rem) {
+  .notification-panel {
+    width: 40%;
+  }
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .notification-panel {
+    bottom: calc(0.625rem + var(--bottom-navigation-height));
+  }
+}

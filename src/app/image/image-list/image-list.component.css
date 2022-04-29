@@ -1,0 +1,37 @@
+.image-list {
+  margin: 0.625rem auto 0;
+}
+
+.image-masonry {
+  margin: 0 auto;
+}
+
+.not-found-center {
+  font-size: 1.5rem;
+  font-weight: var(--weight-medium);
+  grid-column: 1/-1;
+  text-align: center;
+  padding: 5em 0;
+}
+
+.filter-controls {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+/* Landscape phone to portrait tablet */
+@media (max-width: 48rem) {
+  .filter-controls {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 30rem) {
+  .filter-controls {
+    margin-bottom: 1.25rem;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}

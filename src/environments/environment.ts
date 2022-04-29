@@ -1,0 +1,22 @@
+export const environment = {
+  production: false,
+  phegyDomain: "localhost:8080",
+  phegyApiDomain: "localhost:8080",
+  phegyApiUrl: "http://localhost:8080",
+  phegyCdnUrl: "https://cdn.phegy.tech",
+  authPrefix: "Bearer ",
+  authHeader: "Authorization",
+  authTokenKey: "phegyAuthToken",
+  refreshPrefix: "Bearer ",
+  refreshHeader: "Authorization-Refresh",
+  refreshTokenKey: "phegyAuthRefreshToken",
+  preferredThemeKey: "phegyPreferredTheme",
+  defaultPageSize: 8,
+  minUsernameLength: 3,
+  maxUsernameLength: 36,
+  minEmailLength: 3,
+  maxEmailLength: 254,
+  minPasswordLength: 6,
+  maxPasswordLength: 50,
+  newRequestDateKey: "phegyNewRequestDateKey"
+};
