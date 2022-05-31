@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
-  phegyDomain: "phegy.xyz",
-  phegyApiDomain: "api.phegy.xyz",
-  phegyApiUrl: "https://api.phegy.xyz",
+  phegyDomain: "phegy.tech",
+  phegyApiDomain: "api.phegy.tech",
+  phegyApiUrl: "https://api.phegy.tech",
   phegyCdnUrl: "https://cdn.phegy.tech",
   authPrefix: "Bearer ",
   authHeader: "Authorization",

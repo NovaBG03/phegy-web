@@ -1,0 +1,16 @@
+[debug] [2022-05-31T08:50:35.700Z] ----------------------------------------------------------------------
+[debug] [2022-05-31T08:50:35.700Z] Command:       /opt/homebrew/Cellar/node/18.0.0/bin/node /opt/homebrew/bin/firebase deploy
+[debug] [2022-05-31T08:50:35.701Z] CLI Version:   11.0.0
+[debug] [2022-05-31T08:50:35.701Z] Platform:      darwin
+[debug] [2022-05-31T08:50:35.701Z] Node Version:  v18.0.0
+[debug] [2022-05-31T08:50:35.702Z] Time:          Tue May 31 2022 11:50:35 GMT+0300 (Eastern European Summer Time)
+[debug] [2022-05-31T08:50:35.702Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-05-31T08:50:35.734Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-05-31T08:50:35.734Z] > authorizing via signed-in user (nikicha03@gmail.com)
+[debug] [2022-05-31T08:50:35.734Z] [iam] checking project phegy-ui for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2022-05-31T08:50:35.736Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/phegy-ui:testIamPermissions [none]
+[debug] [2022-05-31T08:50:35.736Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/phegy-ui:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-05-31T08:50:36.735Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/phegy-ui:testIamPermissions 200
+[debug] [2022-05-31T08:50:36.736Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/phegy-ui:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2022-05-31T08:50:36.736Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/phegy-ui [none]

@@ -103,6 +103,10 @@ body {
   overflow: hidden;
 }
 
+.min-height {
+  min-height: calc(100vh - 4rem);
+}
+
 .main-container {
   padding: 1rem 3.75rem;
 }

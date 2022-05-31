@@ -213,3 +213,13 @@ ul ul li {
     overflow: hidden;
   }
 }
+
+@media (max-width: 30rem) {
+  .logo {
+    min-width: 6rem;
+  }
+
+  .authentication .link {
+    margin: 0 0 0 0.5rem;
+  }
+}

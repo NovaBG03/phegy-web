@@ -1,0 +1,8 @@
+.about-us {
+  font-size: 1.125rem;
+  line-height: 1.5;
+  background: var(--color-main);
+  padding: 0.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: var(--box-shadow-card);
+}
